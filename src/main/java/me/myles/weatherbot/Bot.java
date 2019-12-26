@@ -18,10 +18,10 @@ public class Bot {
         CommandClientBuilder builder = new CommandClientBuilder()
                 .setOwnerId("657468101188911104")
                 .setPrefix("?")
-                .setHelpWord("help");
+                .setHelpWord("help")
+                .addCommand(new Weather(forecastApiToken, mapsApiToken));
 
         CommandClient client = builder.build();
-        client.addCommand(new Weather(forecastApiToken, mapsApiToken));
 
         jda.addEventListener(client);
     }

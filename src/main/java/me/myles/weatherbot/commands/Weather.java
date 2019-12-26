@@ -26,8 +26,8 @@ public class Weather extends Command {
 
     public Weather(String forecastApiToken, String mapsApiToken){
         super.name = "weather";
-        super.aliases = new String[]{"weather", "w"};
-        super.arguments = "[city, (optional) state, (optional) country]";
+        super.aliases = new String[]{"w"};
+        super.arguments = "[location name]";
         super.help = "Retrieves Weather Info";
         super.cooldown = 10;
         this.forecastApiToken = forecastApiToken;

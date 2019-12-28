@@ -101,7 +101,7 @@ public class Weather extends Command {
             eb.addField("Min", daily.getDay(0).temperatureMin() + "F", true);
 
             eb.addField("Summary",currently.get().summary(), true);
-            eb.addField("Precip Prop", currently.get().precipProbability()*100 + "%", true);
+            eb.addField("Precip Prop", String.format("%.5s", currently.get().precipProbability()*100) + "%", true);
             eb.addField("Wind", currently.get().windSpeed() + "mph", true);
 
             int num = alerts.NumberOfAlerts();
@@ -129,14 +129,15 @@ public class Weather extends Command {
 
             Map<String, String[]> days = new HashMap<>();
             days.put("THURSDAY", new String[]{"FRIDAY", "SATURDAY", "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY"});
-            days.put("FRIDAY", new String[]{"FRIDAY", "SATURDAY", "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY"});
-            days.put("SATURDAY", new String[]{"FRIDAY", "SATURDAY", "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY"});
-            days.put("SUNDAY", new String[]{"FRIDAY", "SATURDAY", "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY"});
-            days.put("MONDAY", new String[]{"FRIDAY", "SATURDAY", "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY"});
-            days.put("TUESDAY", new String[]{"FRIDAY", "SATURDAY", "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY"});
-            days.put("WEDNESDAY", new String[]{"FRIDAY", "SATURDAY", "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY"});
+            days.put("FRIDAY", new String[]{"SATURDAY", "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"});
+            days.put("SATURDAY", new String[]{"SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"});
+            days.put("SUNDAY", new String[]{"MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"});
+            days.put("MONDAY", new String[]{"TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", "MONDAY"});
+            days.put("TUESDAY", new String[]{"WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", "MONDAY", "TUESDAY"});
+            days.put("WEDNESDAY", new String[]{"THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY"});
 
-            String[] h = days.get(dt.getDayOfWeek().toString());
+            String[] h = null;
+            h = days.get(dt.getDayOfWeek().toString());
 
             eb.addField(h[0] + "", daily.getDay(1).summary() + " Max: " + daily.getDay(1).temperatureMax() + " Min: " + daily.getDay(1).temperatureMin(), false);
             eb.addField(h[1] + "", daily.getDay(2).summary() + " Max: " + daily.getDay(2).temperatureMax() + " Min: " + daily.getDay(2).temperatureMin(), false);

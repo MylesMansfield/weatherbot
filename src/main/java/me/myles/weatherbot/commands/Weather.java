@@ -136,13 +136,9 @@ public class Weather extends Command {
             String[] h = null;
             h = days.get(dt.getDayOfWeek().toString());
 
-            eb.addField(h[0] + "", daily.getDay(1).summary() + " Max: " + daily.getDay(1).temperatureMax() + " Min: " + daily.getDay(1).temperatureMin(), false);
-            eb.addField(h[1] + "", daily.getDay(2).summary() + " Max: " + daily.getDay(2).temperatureMax() + " Min: " + daily.getDay(2).temperatureMin(), false);
-            eb.addField(h[2] + "", daily.getDay(3).summary() + " Max: " + daily.getDay(3).temperatureMax() + " Min: " + daily.getDay(3).temperatureMin(), false);
-            eb.addField(h[3] + "", daily.getDay(4).summary() + " Max: " + daily.getDay(4).temperatureMax() + " Min: " + daily.getDay(4).temperatureMin(), false);
-            eb.addField(h[4] + "", daily.getDay(5).summary() + " Max: " + daily.getDay(5).temperatureMax() + " Min: " + daily.getDay(5).temperatureMin(), false);
-            eb.addField(h[5] + "", daily.getDay(6).summary() + " Max: " + daily.getDay(6).temperatureMax() + " Min: " + daily.getDay(6).temperatureMin(), false);
-            eb.addField(h[6] + "", daily.getDay(7).summary() + " Max: " + daily.getDay(7).temperatureMax() + " Min: " + daily.getDay(7).temperatureMin(), false);
+            for(int i = 0; i < 7; i++){
+                eb.addField(h[i] + "", daily.getDay(i + 1).summary() + "_Max: " + daily.getDay(1).temperatureMax() + " Min: " + daily.getDay(i + 1).temperatureMin(), false);
+            }
 
             e.getChannel().sendMessage(eb.build()).queue();
         }

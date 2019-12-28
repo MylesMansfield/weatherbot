@@ -109,17 +109,14 @@ public class Weather extends Command {
             if(num <= 0) {
                 eb.addField("Alerts", "none", true);
             }
-            else if(num == 1){
+            else {
                 eb.addField("Alert - " + alerts.getAlertTitle(0), "From " + alerts.getAlertTime(0) + " To " + alerts.getAlertExpireTime(0), false);
-            }
-            else if(num == 2){
-                eb.addField("Alert - " + alerts.getAlertTitle(0), "From " + alerts.getAlertTime(0) + " To " + alerts.getAlertExpireTime(0), false);
-                eb.addField("Alert - " + alerts.getAlertTitle(1), "From " + alerts.getAlertTime(1) + " To " + alerts.getAlertExpireTime(1), false);
-            }
-            else{
-                eb.addField("Alert - " + alerts.getAlertTitle(0), "From " + alerts.getAlertTime(0) + " To " + alerts.getAlertExpireTime(0), false);
-                eb.addField("Alert - " + alerts.getAlertTitle(1), "From " + alerts.getAlertTime(1) + " To " + alerts.getAlertExpireTime(1), false);
-                eb.addField("Alert - " + alerts.getAlertTitle(2), "From " + alerts.getAlertTime(2) + " To " + alerts.getAlertExpireTime(2), false);
+                if (num >= 2) {
+                    eb.addField("Alert - " + alerts.getAlertTitle(1), "From " + alerts.getAlertTime(1) + " To " + alerts.getAlertExpireTime(1), false);
+                    if (num > 2) {
+                        eb.addField("More Alerts", "https://darksky.net/forecast/" + lat + "," + lng + "/us12/en", false);
+                    }
+                }
             }
 
             eb.addBlankField(false);

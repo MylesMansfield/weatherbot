@@ -137,7 +137,7 @@ public class Weather extends Command {
             h = days.get(dt.getDayOfWeek().toString());
 
             for(int i = 0; i < 7; i++){
-                eb.addField(h[i] + "", daily.getDay(i + 1).summary() + " Max: " + daily.getDay(1).temperatureMax() + " Min: " + daily.getDay(i + 1).temperatureMin(), true);
+                eb.addField(h[i] + "", daily.getDay(i + 1).summary() + " Max: " + daily.getDay(i + 1).temperatureMax() + " Min: " + daily.getDay(i + 1).temperatureMin(), true);
             }
 
             e.getChannel().sendMessage(eb.build()).queue();

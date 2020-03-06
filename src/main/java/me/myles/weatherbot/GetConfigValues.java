@@ -15,7 +15,7 @@ public class GetConfigValues {
         try {
             token = new String[3];
             Properties prop = new Properties();
-            String propFileName = "config.properties";
+            String propFileName = "secrets";
 
             inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
 
@@ -25,9 +25,9 @@ public class GetConfigValues {
                 throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
             }
 
-            token[0] = prop.getProperty("token");
-            token[1] = prop.getProperty("forecast");
-            token[2] = prop.getProperty("maps");
+            token[0] = prop.getProperty("discordApiToken");
+            token[1] = prop.getProperty("forecastApiToken");
+            token[2] = prop.getProperty("mapsApiToken");
 
 
         } catch (Exception e) {
